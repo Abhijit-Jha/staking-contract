@@ -2,9 +2,7 @@
 pragma solidity ^0.8.3;
 
 contract Stake {
-
     mapping(address => uint256) public stakedAmount;
-    
 
     // stake ETH
     function stake() public payable {
@@ -14,12 +12,11 @@ contract Stake {
 
     // unstake ETH
     function unstake(uint256 amount) public {
-
         require(stakedAmount[msg.sender] >= amount, "Not enough staked");
 
         stakedAmount[msg.sender] -= amount;
 
-        (bool success, ) = payable(msg.sender).call{value: amount}("");
+        (bool success,) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
     }
 }
