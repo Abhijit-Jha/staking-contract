@@ -4,6 +4,7 @@ pragma solidity ^0.8.3;
 contract Stake {
 
     mapping(address => uint256) public stakedAmount;
+    
 
     // stake ETH
     function stake() public payable {
